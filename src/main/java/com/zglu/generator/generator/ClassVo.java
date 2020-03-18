@@ -16,6 +16,7 @@ public class ClassVo {
     private String packageName;
     private String importString;
     private String author;
+    private String database;
     private String tableName;
     private String tableComment;
     private String tableNameMid;
@@ -26,6 +27,7 @@ public class ClassVo {
 
     public ClassVo(String tableName, List<Columns> columnsList, GeneratorConfig generatorConfig, String tableComment) {
         this.author = generatorConfig.getAuthor();
+        this.database = generatorConfig.getDatabase();
         this.tableName = tableName;
         this.tableComment = tableComment;
         this.tableNameMid = ReplaceUtils.getUrlName(this.tableName);

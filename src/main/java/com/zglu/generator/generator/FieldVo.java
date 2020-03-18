@@ -23,6 +23,7 @@ public class FieldVo {
     private String type;
     private String name;
     private String value;
+    private String primaryKey;
 
     public FieldVo(Columns columns, GeneratorConfig generatorConfig) {
         this.comment = columns.getColumnComment();
@@ -30,6 +31,7 @@ public class FieldVo {
         this.name = ReplaceUtils.getFieldName(columns.getColumnName());
         this.setValueByParams(columns.getColumnDefault(), columns.getIsNullable(), generatorConfig);
         this.addNeedImport(generatorConfig, this.type);
+        this.primaryKey = generatorConfig.getPrimaryKey();
     }
 
     private void setValueByParams(String columnDefault, String isNullable, GeneratorConfig generatorConfig) {
@@ -68,7 +70,7 @@ public class FieldVo {
             sb.append(this.tab).append(" * ").append(this.comment).append("\n");
             sb.append(this.tab).append(" */").append("\n");
         }
-        if ("id".equalsIgnoreCase(this.name.toLowerCase())) {
+        if (this.primaryKey.equalsIgnoreCase(this.name.toLowerCase())) {
             sb.append(this.tab).append("@Id").append("\n");
             sb.append(this.tab).append("@GeneratedValue(strategy = GenerationType.IDENTITY)").append("\n");
         }

@@ -33,7 +33,7 @@ public class {className}Dao {
     }
 
     public List<{className}> findAll(String q, String order, Integer offset, Integer limit) {
-        String searchSql = "SELECT * FROM {tableName} ";
+        String searchSql = "SELECT * FROM {database}.{tableName} ";
         if (StringUtils.hasText(q)) {
             searchSql += "WHERE " + ReplaceUtils.getColumnName(q);
         }
@@ -48,7 +48,7 @@ public class {className}Dao {
     }
 
     public long count(String q) {
-        String searchSql = "SELECT COUNT(id) FROM {tableName} ";
+        String searchSql = "SELECT COUNT(id) FROM {database}.{tableName} ";
         if (StringUtils.hasText(q)) {
             searchSql += "WHERE " + ReplaceUtils.getColumnName(q);
         }

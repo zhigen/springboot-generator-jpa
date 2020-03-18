@@ -22,6 +22,7 @@ public class GeneratorConfig {
     private String templatePath = first + "/src/main/resources/template";
     private String targetPath = first + "/src/main/java/com/zglu/generator";
     private String targetDir;
+    private String primaryKey = "id";
     private String nullableTrue;
     private String defaultBitTrue;
     private String sqlLineFeed = ", \" +\n            \"";
