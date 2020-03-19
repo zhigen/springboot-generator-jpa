@@ -1,7 +1,7 @@
 package com.zglu.generator.target.{packageName}.dao;
 
 import com.zglu.generator.generator.ReplaceUtils;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -16,11 +16,11 @@ import java.util.List;
  * @author {author}
  */
 @Component
-@AllArgsConstructor
 public class {className}Dao {
-    private final {className}Repository {valName}Repository;
+    @Autowired
+    private {className}Repository {valName}Repository;
     @PersistenceContext
-    private final EntityManager entityManager;
+    private EntityManager entityManager;
 
     public {className} save({className} {valName}) {
         boolean flag = {valName}.getId() == null || {valName}.getId() == 0L || !{valName}Repository.existsById({valName}.getId());
